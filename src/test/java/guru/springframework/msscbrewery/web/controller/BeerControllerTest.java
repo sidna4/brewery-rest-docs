@@ -22,6 +22,7 @@ import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.StringUtils;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import static org.hamcrest.core.Is.is;
@@ -32,8 +33,10 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 //import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.restdocs.request.RequestDocumentation.*;
+//import static org.springframework.restdocs.request.RequestDocumentation.*;
+//import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.restdocs.snippet.Attributes.key;
 //import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -69,20 +72,25 @@ public class BeerControllerTest {
     public void getBeer() throws Exception {
         given(beerService.getBeerById(any(UUID.class))).willReturn(validBeer);
 
-        mockMvc.perform(get("/api/v1/beer/" + validBeer.getId().toString()).accept(MediaType.APPLICATION_JSON))
+        ConstrainedFields fields = new ConstrainedFields(BeerDto.class);
+
+        mockMvc.perform(get("/api/v1/beer/{beerId}", validBeer.getId().toString()).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 //                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.id", is(validBeer.getId().toString())))
                 .andExpect(jsonPath("$.beerName", is("Beer1")))
                 .andDo(document("v1/beer-get",
+                        pathParameters(
+                                parameterWithName("beerId").description("UUID of desired beer to get.")
+                        ),
                         responseFields(
-                                fieldWithPath("id").description("Id of Beer"),
-                                fieldWithPath("createdDate").description("Date Created"),
-                                fieldWithPath("lastUpdatedDate").description("Date Updated"),
-                                fieldWithPath("beerName").description("Beer Name"),
-                                fieldWithPath("beerStyle").description("Beer Style"),
-                                fieldWithPath("upc").description("UPC of Beer")
+                                fields.withPath("id").description("Id of Beer").type(UUID.class),
+                                fields.withPath("createdDate").description("Date Created").type(OffsetDateTime.class),
+                                fields.withPath("lastUpdatedDate").description("Date Updated").type(OffsetDateTime.class),
+                                fields.withPath("beerName").description("Beer Name"),
+                                fields.withPath("beerStyle").description("Beer Style"),
+                                fields.withPath("upc").description("UPC of Beer")
                         )
                         )
                 );

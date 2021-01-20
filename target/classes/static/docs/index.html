@@ -443,7 +443,7 @@ documentation snippets.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://dev.springframework.guru:80/api/v1/beer/8bc0b500-6160-4e84-8eed-f2819e373581' -i -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'https://dev.springframework.guru:80/api/v1/beer/9640c495-1544-4bff-891c-9271c922e3d6' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -452,7 +452,7 @@ documentation snippets.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/v1/beer/8bc0b500-6160-4e84-8eed-f2819e373581 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /api/v1/beer/9640c495-1544-4bff-891c-9271c922e3d6 HTTP/1.1
 Accept: application/json
 Host: dev.springframework.guru:80</code></pre>
 </div>
@@ -466,7 +466,7 @@ Host: dev.springframework.guru:80</code></pre>
 Content-Type: application/json
 Content-Length: 148
 
-{"id":"8bc0b500-6160-4e84-8eed-f2819e373581","beerName":"Beer1","beerStyle":"PALE_ALE","upc":123456789012,"createdDate":null,"lastUpdatedDate":null}</code></pre>
+{"id":"9640c495-1544-4bff-891c-9271c922e3d6","beerName":"Beer1","beerStyle":"PALE_ALE","upc":123456789012,"createdDate":null,"lastUpdatedDate":null}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -474,7 +474,7 @@ Content-Length: 148
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code>{"id":"8bc0b500-6160-4e84-8eed-f2819e373581","beerName":"Beer1","beerStyle":"PALE_ALE","upc":123456789012,"createdDate":null,"lastUpdatedDate":null}</code></pre>
+<pre class="highlight nowrap"><code>{"id":"9640c495-1544-4bff-891c-9271c922e3d6","beerName":"Beer1","beerStyle":"PALE_ALE","upc":123456789012,"createdDate":null,"lastUpdatedDate":null}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -496,17 +496,17 @@ Content-Length: 148
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class java.util.UUID</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Id of Beer</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>createdDate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class java.time.OffsetDateTime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Date Created</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lastUpdatedDate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class java.time.OffsetDateTime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Date Updated</p></td>
 </tr>
 <tr>
@@ -558,7 +558,7 @@ Host: dev.springframework.guru:80
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 201 Created
-Location: /api/v1/beer/bb7c383e-8d58-44f3-bc8d-164cc7090b7e</code></pre>
+Location: /api/v1/beer/d9523072-fca5-474f-81ba-c3710e728c4f</code></pre>
 </div>
 </div>
 <div class="paragraph">

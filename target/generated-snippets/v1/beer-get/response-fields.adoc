@@ -2,15 +2,15 @@
 |Path|Type|Description
 
 |`+id+`
-|`+String+`
+|`+class java.util.UUID+`
 |Id of Beer
 
 |`+createdDate+`
-|`+Null+`
+|`+class java.time.OffsetDateTime+`
 |Date Created
 
 |`+lastUpdatedDate+`
-|`+Null+`
+|`+class java.time.OffsetDateTime+`
 |Date Updated
 
 |`+beerName+`
